@@ -14,11 +14,13 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        scoreMenu.text = "Best Score: " + SaveData.Instance.nameBestPlayer + ": " + SaveData.Instance.points; 
+            //nameOfPlayer receive the name of best score for show that name on screen of menu
+            SaveData.Instance.nameOfPlayer = SaveData.Instance.nameBestPlayer;
+            scoreMenu.text = "Best Score: " + SaveData.Instance.nameBestPlayer + ": " + SaveData.Instance.points;
     }
     public void EnterNewName()
     {
-        SaveData.Instance.EnterName(namePlayer.text);
+            SaveData.Instance.EnterName(namePlayer.text);
     }
     public void StartGame()
     {
@@ -27,6 +29,11 @@ public class Menu : MonoBehaviour
 
     public void Exit()
     {
+        //Save the name of the best score when exit
+        if (namePlayer.text != SaveData.Instance.nameBestPlayer)
+        {
+            SaveData.Instance.nameOfPlayer=SaveData.Instance.nameBestPlayer;
+        }
         SaveData.Instance.SavePoints(SaveData.Instance.points);
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
