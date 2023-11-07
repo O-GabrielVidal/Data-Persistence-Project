@@ -9,6 +9,7 @@ public class SaveData : MonoBehaviour
 
     public int points=0;
     public string nameOfPlayer;
+    public string nameBestPlayer;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class SaveData : MonoBehaviour
     class DataofBestScore
     {
         public int points;
-        public string nameOfPlayer;
+        public string nameBestPlayer;
     }
 
     public void EnterName(string name)
@@ -40,7 +41,7 @@ public class SaveData : MonoBehaviour
         DataofBestScore bs= new DataofBestScore();
         bs.points = p;
         points=bs.points;
-        bs.nameOfPlayer = nameOfPlayer;
+        bs.nameBestPlayer = nameOfPlayer;
 
         string json=JsonUtility.ToJson(bs);
 
@@ -57,7 +58,7 @@ public class SaveData : MonoBehaviour
             DataofBestScore bs=JsonUtility.FromJson<DataofBestScore>(json);
 
             points = bs.points;
-            nameOfPlayer = bs.nameOfPlayer;
+            nameBestPlayer = bs.nameBestPlayer;
         }
     }
 }

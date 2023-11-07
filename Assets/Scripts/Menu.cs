@@ -14,7 +14,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        scoreMenu.text = "Best Score: " + SaveData.Instance.nameOfPlayer + ": " + SaveData.Instance.points; 
+        scoreMenu.text = "Best Score: " + SaveData.Instance.nameBestPlayer + ": " + SaveData.Instance.points; 
     }
     public void EnterNewName()
     {

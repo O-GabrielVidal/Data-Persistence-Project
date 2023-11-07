@@ -41,7 +41,10 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
-        BestScoreText.text = "Best Score: " + SaveData.Instance.nameOfPlayer + " :" + SaveData.Instance.points;
+        SaveData.Instance.LoadPoints();
+        BestScoreText.text = "Best Score: " + SaveData.Instance.nameBestPlayer + " :" + SaveData.Instance.points;
+
+       
         if (!m_Started)
         {
             if (Input.GetKeyDown(KeyCode.Space))
