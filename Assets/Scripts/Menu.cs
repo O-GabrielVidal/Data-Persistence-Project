@@ -5,21 +5,21 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Menu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TextMeshProUGUI namePlayer;
+    public TextMeshProUGUI scoreMenu;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        scoreMenu.text = "Best Score: " + SaveData.Instance.nameOfPlayer + ": " + SaveData.Instance.points; 
     }
-
+    public void EnterNewName()
+    {
+        SaveData.Instance.EnterName(namePlayer.text);
+    }
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -27,6 +27,7 @@ public class Menu : MonoBehaviour
 
     public void Exit()
     {
+        SaveData.Instance.SavePoints(SaveData.Instance.points);
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else
